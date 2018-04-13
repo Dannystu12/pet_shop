@@ -29,5 +29,14 @@ def pets_by_breed pet_shop, breed
 end
 
 def find_pet_by_name pet_shop, name
+  pet_shop[:pets].each {|pet| return pet if pet[:name] == name}
+  nil
+end
 
+def remove_pet_by_name pet_shop, name
+  pet_shop[:pets].delete(find_pet_by_name pet_shop, name)
+end
+
+def add_pet_to_stock pet_shop, pet
+  pet_shop[:pets] << pet
 end
