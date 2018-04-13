@@ -205,14 +205,14 @@ class TestPetShop < Minitest::Test
   end
 
   def test_sell_pet_to_customer__insufficient_funds
-    customer = @customers[1]
-    pet = find_pet_by_name(@pet_shop,"Arthur")
+    customer = @customers[0]
+    pet = find_pet_by_name(@pet_shop,"Merlin")
 
     sell_pet_to_customer(@pet_shop, pet, customer)
 
     assert_equal(0, customer_pet_count(customer))
     assert_equal(0, pets_sold(@pet_shop))
-    assert_equal(50, customer_cash(customer))
+    assert_equal(1000, customer_cash(customer))
     assert_equal(1000, total_cash(@pet_shop))
   end
 
