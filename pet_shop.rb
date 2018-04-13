@@ -7,6 +7,7 @@ def total_cash pet_shop
 end
 
 def add_or_remove_cash pet_shop, cash
+  raise "Error: cant remove more cash than shop has" if cash > pet_shop[:admin][:total_cash]
   pet_shop[:admin][:total_cash] += cash
 end
 
@@ -39,4 +40,21 @@ end
 
 def add_pet_to_stock pet_shop, pet
   pet_shop[:pets] << pet
+end
+
+def customer_cash customer
+  customer[:cash]
+end
+
+def remove_customer_cash customer, cash_to_remove
+  raise "Error: cant remove more cash than customer has" if cash_to_remove > customer[:cash]
+  customer[:cash] -= cash_to_remove
+end
+
+def customer_pet_count customer
+  customer[:pets].count
+end
+
+def add_pet_to_customer customer, pet
+  customer[:pets] << pet
 end
